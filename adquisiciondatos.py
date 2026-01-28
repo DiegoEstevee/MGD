@@ -10,21 +10,21 @@ nifty_data = request.get_hist(symbol='LINKUSD',exchange='BINANCE',interval=Inter
 
 df = nifty_data.copy()
 df = df.reset_index() 
-# 2) Parsear datetime (columna exacta: "datetime")
+
+
 df["datetime"] = pd.to_datetime(df["datetime"], errors="coerce")
 df = df.dropna(subset=["datetime"])
 
 df["year"] = df["datetime"].dt.year
 df["month"] = df["datetime"].dt.month
 
-# 4) Ruta de salida con estructura tipo data lake
+
 base_out = "output_to_upload/crypto=chainlink/exchange=binance/dataset=nifty_data"
 os.makedirs(base_out, exist_ok=True)
 
 df = df.sort_values("datetime")
 
 
-# 5) Exportar un CSV por year/month
 for (y, m), chunk in df.groupby(["year", "month"]):
     out_dir = os.path.join(base_out, f"year={y}", f"month={m:02d}")
     os.makedirs(out_dir, exist_ok=True)
