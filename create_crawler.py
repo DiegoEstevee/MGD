@@ -1,6 +1,6 @@
 import time
 import boto3
-from botocore.exceptions import ClientError
+
 
 AWS_REGION = "eu-south-2"  
 GROUP = "imat3a04"  
@@ -10,7 +10,7 @@ CRYPTO = "link"
 CRAWLER_NAME = f"crawler_{GROUP}_{CRYPTO}"
  
 S3_BUCKET = "tradedata-linkusd"
-S3_PREFIX = "/"  
+S3_PREFIX = ""  
 
 GLUE_ROLE_ARN = "arn:aws:iam::715841369216:role/GlueCrawlerRole-trade-data-MGD"
 
