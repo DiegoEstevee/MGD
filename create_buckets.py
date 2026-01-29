@@ -48,7 +48,7 @@ for year_dir in sorted(os.listdir(BASE_PATH)):
                 monthly_files.append(csv_path)
 
     if not monthly_files:
-        print(f"⚠️ {year_dir}: no hay meses con {OBJECT_NAME}")
+        print(f" {year_dir}: no hay meses con {OBJECT_NAME}")
         continue
 
     # Leer y concatenar
@@ -68,6 +68,6 @@ for year_dir in sorted(os.listdir(BASE_PATH)):
     # Subir a S3 como un CSV anual
     key = f"{year_dir}/{OBJECT_NAME}"
     s3.upload_file(tmp_csv, BUCKET_NAME, key)
-    print(f"✅ {year_dir}: subido {len(year_df)} filas -> s3://{BUCKET_NAME}/{key}")
+    print(f"{year_dir}: subido {len(year_df)} filas -> s3://{BUCKET_NAME}/{key}")
 
     os.remove(tmp_csv)
