@@ -35,6 +35,6 @@ for (y, m), chunk in df.groupby(["year", "month"]):
 
     out_file = os.path.join(out_dir, "data.csv")
 
-    chunk.drop(columns=["datetime", "year", "month"]).to_csv(out_file, index=False)
+    chunk.drop(columns=[ "year", "month"]).to_csv(out_file, index=False)
 
 print("Listo.")

@@ -10,7 +10,7 @@ CRYPTO = "link"
 CRAWLER_NAME = f"crawler_{GROUP}_{CRYPTO}"
  
 S3_BUCKET = "tradedata-linkusd"
-S3_PREFIX = ""  
+S3_PREFIX = "/bronze"  
 
 GLUE_ROLE_ARN = "arn:aws:iam::715841369216:role/GlueCrawlerRole-trade-data-MGD"
 
